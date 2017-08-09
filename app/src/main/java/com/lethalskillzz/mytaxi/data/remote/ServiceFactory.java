@@ -3,6 +3,7 @@ package com.lethalskillzz.mytaxi.data.remote;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.lethalskillzz.mytaxi.utils.MyGsonAdapterFactory;
 
 import java.util.concurrent.TimeUnit;
 
@@ -11,10 +12,9 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-import team.chronus.amona.utils.MyGsonAdapterFactory;
 
 /**
- * Created by ibrahimabdulkadir on 14/07/2017.
+ * Created by ibrahimabdulkadir on 05/08/2017.
  */
 
 public class ServiceFactory {

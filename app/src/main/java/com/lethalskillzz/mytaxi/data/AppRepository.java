@@ -2,21 +2,21 @@ package com.lethalskillzz.mytaxi.data;
 
 import android.content.Context;
 
-import java.util.List;
+import com.lethalskillzz.mytaxi.data.local.prefs.PreferencesHelper;
+import com.lethalskillzz.mytaxi.data.model.Data;
+import com.lethalskillzz.mytaxi.di.ApplicationContext;
+import com.lethalskillzz.mytaxi.di.Local;
+import com.lethalskillzz.mytaxi.di.Remote;
+import com.lethalskillzz.mytaxi.utils.RxUtils;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import io.reactivex.Observable;
-import team.chronus.amona.data.local.prefs.PreferencesHelper;
-import team.chronus.amona.data.model.Event;
-import team.chronus.amona.di.ApplicationContext;
-import team.chronus.amona.di.Local;
-import team.chronus.amona.di.Remote;
-import team.chronus.amona.utils.RxUtils;
+
 
 /**
- * Created by ibrahimabdulkadir on 14/07/2017.
+ * Created by ibrahimabdulkadir on 05/08/2017.
  */
 
 @Singleton
@@ -42,49 +42,29 @@ public class AppRepository implements AppDataSource {
 
 
     @Override
-    public Observable<List<Event>> getRecommendedEvents() {
+    public Observable<Data> getData() {
 
-        if (!mPreferencesHelper.isRocommendedEventSynced()) {
+        if (!mPreferencesHelper.isSynced()) {
             return mAppRemoteDataSource
-                    .getRecommendedEvents()
+                    .getData()
                     .compose(RxUtils.applySchedulers())
-                    .doOnNext(mAppLocalDataSource::saveRecommendedEvents);
+                    .doOnNext(mAppLocalDataSource::saveData);
         } else {
             return mAppLocalDataSource
-                    .getRecommendedEvents()
+                    .getData()
                     .compose(RxUtils.applySchedulers());
         }
     }
 
 
     @Override
-    public Observable<List<Event>> getSelfEvents() {
-
-        if (!mPreferencesHelper.isSelfEventSynced()) {
-            return mAppRemoteDataSource
-                    .getSelfEvents()
-                    .compose(RxUtils.applySchedulers())
-                    .doOnNext(mAppLocalDataSource::saveSelfEvents);
-        } else {
-            return mAppLocalDataSource
-                    .getSelfEvents()
-                    .compose(RxUtils.applySchedulers());
-        }
-    }
-
-    @Override
-    public void saveRecommendedEvents(List<Event> events) {
-        mAppLocalDataSource.saveRecommendedEvents(events);
-    }
-
-    @Override
-    public void saveSelfEvents(List<Event> events) {
-        mAppLocalDataSource.saveSelfEvents(events);
+    public void saveData(Data data) {
+        mAppLocalDataSource.saveData(data);
     }
 
 
-    public boolean isAuth() {
-        return mPreferencesHelper.isAuth();
+    public void markRepoAsSynced(boolean synced) {
+        mPreferencesHelper.setIsSynced(synced);
     }
 
 }

@@ -1,10 +1,11 @@
 package com.lethalskillzz.mytaxi.presentation.detail;
 
+import com.lethalskillzz.mytaxi.data.AppRepository;
+import com.lethalskillzz.mytaxi.presentation.base.BasePresenter;
+
 import javax.inject.Inject;
 
 import io.reactivex.disposables.CompositeDisposable;
-import team.chronus.amona.data.AppRepository;
-import team.chronus.amona.presentation.base.BasePresenter;
 
 /**
  * Created by ibrahimabdulkadir on 04/08/2017.

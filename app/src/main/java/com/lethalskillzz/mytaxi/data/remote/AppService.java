@@ -1,21 +1,17 @@
 package com.lethalskillzz.mytaxi.data.remote;
 
-import java.util.List;
+import com.lethalskillzz.mytaxi.data.model.Data;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
-import retrofit2.http.Query;
-import team.chronus.amona.data.model.Event;
 
 /**
- * Created by ibrahimabdulkadir on 14/07/2017.
+ * Created by ibrahimabdulkadir on 05/08/2017.
  */
 
 public interface AppService {
 
-    @GET("/recommended/events")
-    Observable<List<Event>> loadRecommendedEventsFromServer(@Query("access_token") String accessToken);
+    @GET("/car2go/vehicles.json")
+    Observable<Data> loadDataFromServer();
 
-    @GET("/self/events")
-    Observable<List<Event>> loadSelfEventsFromServer(@Query("access_token") String accessToken);
 }

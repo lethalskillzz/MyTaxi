@@ -4,12 +4,13 @@ package com.lethalskillzz.mytaxi.presentation.base;
  * Created by ibrahimabdulkadir on 04/08/2017.
  */
 
+import com.lethalskillzz.mytaxi.R;
+import com.lethalskillzz.mytaxi.data.AppRepository;
+
 import javax.inject.Inject;
 
 import io.reactivex.disposables.CompositeDisposable;
 import retrofit2.HttpException;
-import team.chronus.amona.R;
-import team.chronus.amona.data.AppRepository;
 
 /**
  * Base class that implements the Presenter interface and provides a base implementation for

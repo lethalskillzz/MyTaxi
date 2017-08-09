@@ -1,17 +1,17 @@
 package com.lethalskillzz.mytaxi.di.component;
 
+import com.lethalskillzz.mytaxi.di.PerActivity;
+import com.lethalskillzz.mytaxi.di.module.ActivityModule;
+import com.lethalskillzz.mytaxi.presentation.detail.DetailActivity;
+import com.lethalskillzz.mytaxi.presentation.detail.DetailFragment;
+import com.lethalskillzz.mytaxi.presentation.master.MasterActivity;
+import com.lethalskillzz.mytaxi.presentation.master.MasterFragment;
+import com.lethalskillzz.mytaxi.presentation.splash.SplashActivity;
+
 import dagger.Component;
-import team.chronus.amona.di.PerActivity;
-import team.chronus.amona.di.module.ActivityModule;
-import team.chronus.amona.presentation.auth.AuthActivity;
-import team.chronus.amona.presentation.detail.DetailActivity;
-import team.chronus.amona.presentation.detail.DetailFragment;
-import team.chronus.amona.presentation.master.MasterActivity;
-import team.chronus.amona.presentation.master.MasterFragment;
-import team.chronus.amona.presentation.splash.SplashActivity;
 
 /**
- * Created by ibrahimabdulkadir on 14/07/2017.
+ * Created by ibrahimabdulkadir on 05/08/2017.
  */
 
 @PerActivity
@@ -19,8 +19,6 @@ import team.chronus.amona.presentation.splash.SplashActivity;
 public interface ActivityComponent {
 
     void inject(SplashActivity activity);
-
-    void inject(AuthActivity activity);
 
     void inject(MasterActivity activity);
 

@@ -3,16 +3,17 @@ package com.lethalskillzz.mytaxi.di.component;
 import android.app.Application;
 import android.content.Context;
 
+import com.lethalskillzz.mytaxi.App;
+import com.lethalskillzz.mytaxi.data.AppRepository;
+import com.lethalskillzz.mytaxi.di.ApplicationContext;
+import com.lethalskillzz.mytaxi.di.module.ApplicationModule;
+
 import javax.inject.Singleton;
 
 import dagger.Component;
-import team.chronus.amona.App;
-import team.chronus.amona.data.AppRepository;
-import team.chronus.amona.di.ApplicationContext;
-import team.chronus.amona.di.module.ApplicationModule;
 
 /**
- * Created by ibrahimabdulkadir on 14/07/2017.
+ * Created by ibrahimabdulkadir on 05/08/2017.
  */
 
 @Singleton

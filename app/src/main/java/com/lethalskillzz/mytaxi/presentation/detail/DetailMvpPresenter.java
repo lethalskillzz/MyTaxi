@@ -1,7 +1,8 @@
 package com.lethalskillzz.mytaxi.presentation.detail;
 
-import team.chronus.amona.di.PerActivity;
-import team.chronus.amona.presentation.base.MvpPresenter;
+
+import com.lethalskillzz.mytaxi.di.PerActivity;
+import com.lethalskillzz.mytaxi.presentation.base.MvpPresenter;
 
 /**
  * Created by ibrahimabdulkadir on 04/08/2017.

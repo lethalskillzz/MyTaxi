@@ -1,18 +1,21 @@
 package com.lethalskillzz.mytaxi.data.local;
 
+import com.lethalskillzz.mytaxi.data.AppDataSource;
+import com.lethalskillzz.mytaxi.data.local.db.PlacemarkPersistenceContract.PlacemarkEntry;
+import com.lethalskillzz.mytaxi.data.model.Data;
+import com.lethalskillzz.mytaxi.data.model.Placemark;
+import com.lethalskillzz.mytaxi.utils.DbUtils;
 import com.squareup.sqlbrite.BriteDatabase;
-
-import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import hu.akarnokd.rxjava.interop.RxJavaInterop;
 import io.reactivex.Observable;
-import team.chronus.amona.data.AppDataSource;
-import team.chronus.amona.data.model.Event;
+
 
 /**
- * Created by ibrahimabdulkadir on 14/07/2017.
+ * Created by ibrahimabdulkadir on 05/08/2017.
  */
 
 @Singleton
@@ -25,27 +28,36 @@ public class AppLocalDataSource implements AppDataSource {
         mDatabaseHelper = briteDatabase;
     }
 
-    @Override
-    public Observable<List<Event>> getRecommendedEvents() {
-        throw new UnsupportedOperationException("getRecommendedEvents in AppLocalDataSource is not implemented!");
-    }
 
     @Override
-    public Observable<List<Event>> getSelfEvents() {
-        throw new UnsupportedOperationException("getSelfEvents in AppLocalDataSource is not implemented!");
-    }
+    public Observable<Data> getData() {
 
+        rx.Observable<Data> listObservable = mDatabaseHelper
+                .createQuery(PlacemarkEntry.TABLE_NAME, DbUtils.getSelectAllQuery(PlacemarkEntry.TABLE_NAME))
+                .mapToOne(DbUtils::placemarksFromCursor);
 
-    @Override
-    public void saveRecommendedEvents(List<Event> events) {
-        throw new UnsupportedOperationException("saveRecommendedEvents in AppLocalDataSource is not implemented!");
+        return RxJavaInterop.toV2Observable(listObservable);
     }
 
 
     @Override
-    public void saveSelfEvents(List<Event> events) {
-        throw new UnsupportedOperationException("saveSelfEvents in AppLocalDataSource is not implemented!");
+    public void saveData(Data data) {
+        BriteDatabase.Transaction transaction = mDatabaseHelper.newTransaction();
+
+        try {
+            deleteAllData();
+            for (Placemark placemark : data.placemarks()) {
+                mDatabaseHelper.insert(PlacemarkEntry.TABLE_NAME,
+                        DbUtils.placemarkToContentValues(placemark));
+            }
+            transaction.markSuccessful();
+        } finally {
+            transaction.end();
+        }
     }
 
+    private void deleteAllData() {
+        mDatabaseHelper.delete(PlacemarkEntry.TABLE_NAME, null);
+    }
 
 }

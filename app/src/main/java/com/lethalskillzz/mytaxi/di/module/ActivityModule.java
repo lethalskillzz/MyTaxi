@@ -2,28 +2,30 @@ package com.lethalskillzz.mytaxi.di.module;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
+
+import com.lethalskillzz.mytaxi.di.ActivityContext;
+import com.lethalskillzz.mytaxi.di.PerActivity;
+import com.lethalskillzz.mytaxi.presentation.detail.DetailMvpPresenter;
+import com.lethalskillzz.mytaxi.presentation.detail.DetailMvpView;
+import com.lethalskillzz.mytaxi.presentation.detail.DetailPresenter;
+import com.lethalskillzz.mytaxi.presentation.master.MasterAdapter;
+import com.lethalskillzz.mytaxi.presentation.master.MasterMvpPresenter;
+import com.lethalskillzz.mytaxi.presentation.master.MasterMvpView;
+import com.lethalskillzz.mytaxi.presentation.master.MasterPresenter;
+import com.lethalskillzz.mytaxi.presentation.splash.SplashMvpPresenter;
+import com.lethalskillzz.mytaxi.presentation.splash.SplashMvpView;
+import com.lethalskillzz.mytaxi.presentation.splash.SplashPresenter;
+
+import java.util.ArrayList;
 
 import dagger.Module;
 import dagger.Provides;
 import io.reactivex.disposables.CompositeDisposable;
-import team.chronus.amona.di.ActivityContext;
-import team.chronus.amona.di.PerActivity;
-import team.chronus.amona.presentation.auth.AuthMvpPresenter;
-import team.chronus.amona.presentation.auth.AuthMvpView;
-import team.chronus.amona.presentation.auth.AuthPresenter;
-import team.chronus.amona.presentation.detail.DetailMvpPresenter;
-import team.chronus.amona.presentation.detail.DetailMvpView;
-import team.chronus.amona.presentation.detail.DetailPresenter;
-import team.chronus.amona.presentation.master.MasterMvpPresenter;
-import team.chronus.amona.presentation.master.MasterMvpView;
-import team.chronus.amona.presentation.master.MasterPresenter;
-import team.chronus.amona.presentation.splash.SplashMvpPresenter;
-import team.chronus.amona.presentation.splash.SplashMvpView;
-import team.chronus.amona.presentation.splash.SplashPresenter;
 
 /**
- * Created by ibrahimabdulkadir on 14/07/2017.
+ * Created by ibrahimabdulkadir on 05/08/2017.
  */
 
 @Module
@@ -59,13 +61,6 @@ public class ActivityModule {
         return presenter;
     }
 
-    @Provides
-    @PerActivity
-    AuthMvpPresenter<AuthMvpView> provideAuthPresenter(
-            AuthPresenter<AuthMvpView> presenter) {
-        return presenter;
-    }
-
 
     @Provides
     @PerActivity
@@ -82,6 +77,17 @@ public class ActivityModule {
         return presenter;
     }
 
+
+    @Provides
+    MasterAdapter provideMasterAdapter() {
+        return new MasterAdapter(new ArrayList<>(0));
+    }
+
+
+    @Provides
+    DividerItemDecoration provideDividerItemDecoration(AppCompatActivity activity) {
+        return new DividerItemDecoration(activity, LinearLayoutManager.VERTICAL);
+    }
 
     @Provides
     LinearLayoutManager provideLinearLayoutManager(AppCompatActivity activity) {

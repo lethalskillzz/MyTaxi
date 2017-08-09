@@ -4,6 +4,20 @@ import android.app.Application;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
+import com.lethalskillzz.mytaxi.BuildConfig;
+import com.lethalskillzz.mytaxi.R;
+import com.lethalskillzz.mytaxi.data.AppDataSource;
+import com.lethalskillzz.mytaxi.data.local.AppLocalDataSource;
+import com.lethalskillzz.mytaxi.data.local.db.DbHelper;
+import com.lethalskillzz.mytaxi.data.local.prefs.PreferencesHelper;
+import com.lethalskillzz.mytaxi.data.remote.AppRemoteDataSource;
+import com.lethalskillzz.mytaxi.data.remote.AppService;
+import com.lethalskillzz.mytaxi.data.remote.ServiceFactory;
+import com.lethalskillzz.mytaxi.di.ApplicationContext;
+import com.lethalskillzz.mytaxi.di.DatabaseInfo;
+import com.lethalskillzz.mytaxi.di.Local;
+import com.lethalskillzz.mytaxi.di.Remote;
+import com.lethalskillzz.mytaxi.utils.AppConstants;
 import com.squareup.sqlbrite.BriteDatabase;
 import com.squareup.sqlbrite.SqlBrite;
 
@@ -13,24 +27,10 @@ import dagger.Module;
 import dagger.Provides;
 import rx.Scheduler;
 import rx.schedulers.Schedulers;
-import team.chronus.amona.BuildConfig;
-import team.chronus.amona.R;
-import team.chronus.amona.data.AppDataSource;
-import team.chronus.amona.data.local.AppLocalDataSource;
-import team.chronus.amona.data.local.db.DbHelper;
-import team.chronus.amona.data.local.prefs.PreferencesHelper;
-import team.chronus.amona.data.remote.AppRemoteDataSource;
-import team.chronus.amona.data.remote.AppService;
-import team.chronus.amona.data.remote.ServiceFactory;
-import team.chronus.amona.di.ApplicationContext;
-import team.chronus.amona.di.DatabaseInfo;
-import team.chronus.amona.di.Local;
-import team.chronus.amona.di.Remote;
-import team.chronus.amona.utils.AppConstants;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 /**
- * Created by ibrahimabdulkadir on 14/07/2017.
+ * Created by ibrahimabdulkadir on 05/08/2017.
  */
 
 @Module

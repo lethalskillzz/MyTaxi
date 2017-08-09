@@ -2,13 +2,14 @@ package com.lethalskillzz.mytaxi.presentation.splash;
 
 import android.os.SystemClock;
 
+import com.lethalskillzz.mytaxi.data.AppRepository;
+import com.lethalskillzz.mytaxi.presentation.base.BasePresenter;
+import com.lethalskillzz.mytaxi.utils.RxUtils;
+
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
 import io.reactivex.disposables.CompositeDisposable;
-import team.chronus.amona.data.AppRepository;
-import team.chronus.amona.presentation.base.BasePresenter;
-import team.chronus.amona.utils.RxUtils;
 
 /**
  * Created by ibrahimabdulkadir on 04/08/2017.
