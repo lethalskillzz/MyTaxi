@@ -1,8 +1,15 @@
 package com.lethalskillzz.mytaxi;
 
 import android.app.Application;
+import android.content.Context;
+import android.support.multidex.MultiDex;
 
 import com.facebook.stetho.Stetho;
+import com.lethalskillzz.mytaxi.data.AppRepository;
+import com.lethalskillzz.mytaxi.di.component.ApplicationComponent;
+import com.lethalskillzz.mytaxi.di.component.DaggerApplicationComponent;
+import com.lethalskillzz.mytaxi.di.module.ApplicationModule;
+import com.lethalskillzz.mytaxi.utils.AppLogger;
 
 import javax.inject.Inject;
 
@@ -37,6 +44,12 @@ public class App extends Application {
         }
 
         CalligraphyConfig.initDefault(mCalligraphyConfig);
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 
     public ApplicationComponent getComponent() {

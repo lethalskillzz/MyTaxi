@@ -1,7 +1,7 @@
 package com.lethalskillzz.mytaxi.presentation.splash;
 
 
-import team.chronus.amona.presentation.base.MvpView;
+import com.lethalskillzz.mytaxi.presentation.base.MvpView;
 
 /**
  * Created by ibrahimabdulkadir on 04/08/2017.

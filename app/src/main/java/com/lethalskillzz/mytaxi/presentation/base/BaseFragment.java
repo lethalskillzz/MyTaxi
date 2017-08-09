@@ -8,9 +8,9 @@ import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
+import com.lethalskillzz.mytaxi.di.component.ActivityComponent;
+
 import butterknife.Unbinder;
-import team.chronus.amona.di.component.ActivityComponent;
-import team.chronus.amona.utils.CommonUtils;
 
 /**
  * Created by ibrahimabdulkadir on 04/08/2017.
@@ -47,14 +47,11 @@ public abstract class BaseFragment extends Fragment implements MvpView {
     @Override
     public void showLoading() {
         hideLoading();
-        mProgressDialog = CommonUtils.showLoadingDialog(this.getContext());
     }
 
     @Override
     public void hideLoading() {
-        if (mProgressDialog != null && mProgressDialog.isShowing()) {
-            mProgressDialog.cancel();
-        }
+
     }
 
     @Override
@@ -97,13 +94,6 @@ public abstract class BaseFragment extends Fragment implements MvpView {
     public void onDetach() {
         mActivity = null;
         super.onDetach();
-    }
-
-    @Override
-    public void hideKeyboard() {
-        if (mActivity != null) {
-            mActivity.hideKeyboard();
-        }
     }
 
 

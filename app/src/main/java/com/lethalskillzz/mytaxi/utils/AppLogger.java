@@ -1,10 +1,11 @@
 package com.lethalskillzz.mytaxi.utils;
 
-import team.chronus.amona.BuildConfig;
+import com.lethalskillzz.mytaxi.BuildConfig;
+
 import timber.log.Timber;
 
 /**
- * Created by ibrahimabdulkadir on 13/07/2017.
+ * Created by ibrahimabdulkadir on 05/08/2017.
  */
 
 public class AppLogger {

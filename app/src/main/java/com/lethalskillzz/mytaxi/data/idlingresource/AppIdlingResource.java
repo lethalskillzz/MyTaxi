@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 
 /**
- * Created by ibrahimabdulkadir on 14/07/2017.
+ * Created by ibrahimabdulkadir on 05/08/2017.
  */
 
 public class AppIdlingResource implements IdlingResource {

@@ -1,7 +1,9 @@
 package com.lethalskillzz.mytaxi.presentation.master;
 
-import team.chronus.amona.di.PerActivity;
-import team.chronus.amona.presentation.base.MvpPresenter;
+
+import com.lethalskillzz.mytaxi.data.idlingresource.AppIdlingResource;
+import com.lethalskillzz.mytaxi.di.PerActivity;
+import com.lethalskillzz.mytaxi.presentation.base.MvpPresenter;
 
 /**
  * Created by ibrahimabdulkadir on 04/08/2017.
@@ -9,5 +11,7 @@ import team.chronus.amona.presentation.base.MvpPresenter;
 
 @PerActivity
 public interface MasterMvpPresenter <V extends MasterMvpView> extends MvpPresenter<V> {
+
+    void loadPlacemarkFromRepo(boolean forcedSync, AppIdlingResource resource);
 
 }

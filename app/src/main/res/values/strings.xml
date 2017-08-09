@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">MyTaxi</string>
+    <string name="master_label">Master</string>
+    <string name="detail_label">Detail</string>
+
+    <string name="splash_text">www.mytaxi.com</string>
+
+
+    <!--App Message-->
+    <string name="error_no_internet">Couldn\'t connect. Please check your Internet connection!</string>
+    <string name="error_api_retry">Please retry!</string>
+    <string name="error_default">Something wrong happened!</string>
+
+
+    <!--empty state-->
+    <string name="empty_screen">We do not have anything\nhere right now.</string>
+    <string name="pull_refresh">Pull to refresh</string>
+
 </resources>

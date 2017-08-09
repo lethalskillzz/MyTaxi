@@ -1,21 +1,16 @@
 package com.lethalskillzz.mytaxi.data;
 
-import java.util.List;
+import com.lethalskillzz.mytaxi.data.model.Data;
 
 import io.reactivex.Observable;
-import team.chronus.amona.data.model.Event;
 
 /**
- * Created by ibrahimabdulkadir on 14/07/2017.
+ * Created by ibrahimabdulkadir on 05/08/2017.
  */
 
 public interface AppDataSource {
 
-    Observable<List<Event>> getRecommendedEvents();
+    Observable<Data> getData();
 
-    Observable<List<Event>> getSelfEvents();
-
-    void saveRecommendedEvents(List<Event> events);
-
-    void saveSelfEvents(List<Event> events);
+    void saveData(Data data);
 }
